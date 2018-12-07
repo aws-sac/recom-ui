@@ -7,4 +7,10 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'recom';
+
+  loggedIn = false;
+
+  login() {
+    this.loggedIn = !this.loggedIn;
+  }
 }
