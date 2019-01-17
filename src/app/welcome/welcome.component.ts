@@ -1,10 +1,12 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
 
 @Component({
   selector: 'welcome-component',
   templateUrl: './welcome.component.html'
 })
 export class WelcomeComponent {
+  page = 'welcome'
+
   term = ''
 
   recipes = [
@@ -24,5 +26,9 @@ export class WelcomeComponent {
 
   onChange($event) {
     this.term = $event.target.value;
+  }
+
+  updatePage(page) {
+    this.page = page;
   }
 }
