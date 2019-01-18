@@ -6,6 +6,10 @@
 
 <h6 class="border-bottom border-gray pb-2 mb-0">List</h6>
 
+<div class="media text-muted pt-3" *ngIf="recipes.length === 0">
+  <h2>No recipes available, yet.</h2>
+</div>
+
 <div class="media text-muted pt-3" *ngFor="let r of recipes | filter:term">
   <div class="media-body pb-3 mb-0 small lh-125 border-bottom border-gray">
     <div class="d-flex justify-content-between align-items-center w-100">
