@@ -5,27 +5,22 @@
 <form>
   <div class="form-group">
     <label for="name">Full name</label>
-    <input type="text" class="form-control" id="name">
+    <input type="text" class="form-control" id="name" name="fullName" [(ngModel)]="data.fullName">
   </div>
   <div class="form-group">
     <label for="description">About me</label>
-    <textarea class="form-control" id="description" rows="3"></textarea>
+    <textarea class="form-control" id="description" rows="3" name="description" [(ngModel)]="data.description"></textarea>
   </div>
   <div class="form-group">
     <label for="calories">Calories desired per day</label>
-    <input type="number" class="form-control" id="calories">
+    <input type="number" class="form-control" id="calories" name="calories" [(ngModel)]="data.calories">
   </div>
 
   <h2>Symptoms</h2>
-
   <div class="btn-group-toggle" data-toggle="buttons">
-    <label class="btn btn-primary">
-      <input type="checkbox" autocomplete="off"> Head ache
-    </label>
+    <button class="btn btn-primary" (click)="pushPop('headache')">Head ache</button>
 
-    <label class="btn btn-primary">
-      <input type="checkbox" autocomplete="off"> Diabetes
-    </label>
+    <button class="btn btn-primary" (click)="pushPop('diabetes')">Diabetes</button>
   </div>
 
   <hr/>
