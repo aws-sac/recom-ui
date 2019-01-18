@@ -3,11 +3,11 @@
 <div class="container">
   <div class="col-md-12 my-3 p-3 bg-white rounded shadow-sm" style="margin-top:20px;min-height:500px;">
     <div *ngIf="page === 'recipes'">
-      <app-recipes></app-recipes>
+      <app-recipes [data]="recipes"></app-recipes>
     </div>
 
     <div *ngIf="page == 'profile'">
-      <app-profile></app-profile>
+      <app-profile (onSave)="getRecipes($event)"></app-profile>
     </div>
 
     <div *ngIf="page == 'welcome'">
@@ -16,6 +16,12 @@
 
     <div *ngIf="page == 'daily'">
       <h1>Daily recommended menu</h1>
+
+      <div *ngFor="let r of recipes">
+        <h2>{{ r.title }}</h2>
+        <h4>{{ r.calories }} calories</h4>
+        <span>Type: {{ r.type }}</span>
+      </div>
     </div>
   </div>
 </div>

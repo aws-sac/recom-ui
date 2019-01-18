@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 import { UserService } from '../user.service';
 
 @Component({
@@ -13,6 +13,8 @@ export class ProfileComponent implements OnInit {
     description: '',
     diseases: []
   }
+
+  @Output() onSave = new EventEmitter();
 
   constructor(private userService: UserService) { }
 
@@ -32,5 +34,7 @@ export class ProfileComponent implements OnInit {
   saveProfile() {
     console.log(this.data);
     this.userService.save(this.data);
+
+    this.onSave.emit(this.data);
   }
 }

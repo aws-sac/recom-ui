@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 
 @Component({
   selector: 'app-recipes',
@@ -8,24 +8,29 @@ import { Component, OnInit } from '@angular/core';
 export class RecipesComponent implements OnInit {
   term = ''
 
+  @Input() data = [];
+
   recipes = [
-    {
-      title: 'Ham Persillade with Mustard Potato Salad and Mashed Peas',
-      rating: 2.5
-    },
-    {
-      title: 'Yams Braised with Cream, Rosemary and Nutmeg',
-      rating: 5
-    },
-    {
-      title: 'Asian Pear and Watercress Salad with Sesame Dressing',
-      rating: 3
-    }
+    // {
+    //   title: 'Ham Persillade with Mustard Potato Salad and Mashed Peas',
+    //   rating: 2.5
+    // },
+    // {
+    //   title: 'Yams Braised with Cream, Rosemary and Nutmeg',
+    //   rating: 5
+    // },
+    // {
+    //   title: 'Asian Pear and Watercress Salad with Sesame Dressing',
+    //   rating: 3
+    // }
   ]
 
   constructor() { }
 
   ngOnInit() {
+    this.recipes = this.data
+
+    console.log(this.recipes)
   }
 
   onChange($event) {

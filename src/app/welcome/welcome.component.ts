@@ -1,5 +1,6 @@
 import { Component, Input } from '@angular/core';
 import { UserService } from '../user.service';
+import { HttpClient } from '@angular/common/http';
 
 @Component({
   selector: 'welcome-component',
@@ -8,9 +9,21 @@ import { UserService } from '../user.service';
 export class WelcomeComponent {
   page = 'profile'
 
-  constructor(private userService: UserService) {}
+  recipes = [];
+
+  constructor(private userService: UserService, private http: HttpClient) {}
 
   updatePage(page) {
     this.page = page;
+  }
+
+  getRecipes($event) {
+    this.http.get('https://recom-api.herokuapp.com/recommandations').subscribe(data => {
+      console.log(data)
+
+      this.recipes = data[2];
+
+      this.page = 'daily';
+    })
   }
 }
