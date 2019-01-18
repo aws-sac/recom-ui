@@ -19,9 +19,11 @@ export class WelcomeComponent {
 
   getRecipes($event) {
     this.http.get('https://recom-api.herokuapp.com/recommandations').subscribe(data => {
-      console.log(data)
-
-      this.recipes = data[2];
+      this.recipes = data[2].filter(r => {
+        if (r.calories < this.userService.calories) {
+          return r
+        }
+      });
 
       this.page = 'daily';
     })

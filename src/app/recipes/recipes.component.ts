@@ -1,4 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
+import { UserService } from '../user.service';
 
 @Component({
   selector: 'app-recipes',
@@ -25,10 +26,14 @@ export class RecipesComponent implements OnInit {
     // }
   ]
 
-  constructor() { }
+  constructor(private userService: UserService) { }
 
   ngOnInit() {
-    this.recipes = this.data
+    this.recipes = this.data.filter(r => {
+      if (r.calories < this.userService.calories) {
+        return r
+      }
+    })
 
     console.log(this.recipes)
   }

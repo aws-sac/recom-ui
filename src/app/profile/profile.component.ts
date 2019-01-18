@@ -8,10 +8,10 @@ import { UserService } from '../user.service';
 })
 export class ProfileComponent implements OnInit {
   data = {
-    calories: 0,
-    fullName: '',
-    description: '',
-    diseases: []
+    calories: this.userService.calories,
+    fullName: this.userService.fullName,
+    description: this.userService.description,
+    diseases: this.userService.diseases
   }
 
   @Output() onSave = new EventEmitter();
